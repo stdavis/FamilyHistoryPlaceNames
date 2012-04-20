@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Family History Place Names - US</title>
+
+	<!-- CSS -->
+	<link rel='stylesheet' href='css/bootstrap.min.css'/>
+	<link rel='stylesheet' href='css/core.css'/>
+
+	<!-- JAVASCRIPT -->
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js" djConfig='isDebug:true'></script>
+	<script src='js/core.js'></script>
+</head>
+<body>
+	<div class='container'>
+		<div class='hero-unit'>
+			<h1>Family History Place Names</h1>
+			<p>Built by Elaine Davis's favorite grandson, 
+				<a href="http://twitter.com/#/ScottAGRC">Scott</a>.</p>
+		</div>
+		<div id='form' class='form-horizontal'>
+			<fieldset>
+				<legend>Search for cities or counties within a US state</legend>
+				<div class='control-group'>
+					<label class='control-label'>State</label>
+					<div class='controls'>
+						<select id='states-select' class='span2'></select>
+					</div>
+				</div>
+				<div class='control-group'>
+					<label class='control-label'>Type</label>
+					<div class='controls'>
+						<select id='type-select' class='span2'>
+							<option value='cities'>Cities</option>
+							<option value='counties'>Counties</option>
+						</select>
+					</div>
+				</div>
+				<div class='control-group'>
+					<label class='control-label'>Name starts with</label>
+					<div class='controls'>
+						<input id='starts-with-textbox' type='text' class='span2'/>
+						<p class='help-block'>At least one letter is required for city searches.</p>
+					</div>
+				</div>
+				<div class='controls'>
+					<button class='btn btn-primary span2' id='go-button'>Search</button>
+					<img id='loader' src="images/loader.gif">
+				</div>
+			</fieldset>
+		</div>
+		<div id='error-container' class='alert alert-error hidden'>
+			This is kind of embarrassing...but there was an error with the server:<br>
+			<strong id='error-text'>Server error text.</strong><br><br>
+			You can let Scott know at <a href="mailto:scott.sheri@gmail.com">scott.sheri@gmail.com</a>.
+		</div>
+		<h3>Results:</h3>
+		<div id='warning-text' class='alert alert-warning hidden'></div>
+		<div id='results-container'></div>
+	</div>
+</body>
+</html>
