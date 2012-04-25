@@ -10,3 +10,6 @@
 #loader {
 	margin: 6px 0 0 6px;
 }
+.form-horizontal .control-label {
+	width: 150px;
+}
