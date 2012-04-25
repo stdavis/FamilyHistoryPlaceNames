@@ -51,8 +51,9 @@ dojo.declare('fhApp', null, {
 	// loader: img
 	loader: null,
 
-	citiesFeatureCode: 'PPL',
-	countiesFeatureCode: 'ADM2',
+	// fCodes: String
+	//		The feature codes for cities and counties
+	fCodes: 'featureCode=PPL&featureCode=ADM2',
 
 	constructor: function () {
 		// get dom node references
@@ -131,36 +132,27 @@ dojo.declare('fhApp', null, {
 		dojo.addClass(this.warningContainer, 'hidden');
 		dojo.removeClass(this.loader, 'hidden');
 
-		var fcode;
-		if (this.typeSelect.value === 'cities') {
-			// make sure that at least one letter is in starts with
-			if (this.startsWithBox.value.length === 0) {
-				this.showWarning('Please type at least one letter into "Name starts with"');
-				dojo.addClass(this.loader, 'hidden');
-				return;
-			}
-			fcode = this.citiesFeatureCode;
-		} else {
-			fcode = this.countiesFeatureCode;
+		// make sure that at least one letter is in starts with
+		if (this.startsWithBox.value.length === 0) {
+			this.showWarning('Please type at least one letter into "Name starts with"');
+			dojo.addClass(this.loader, 'hidden');
+			return;
 		}
 
 		var params = {
-			url: this.urls.search,
+			url: this.urls.search + '?' + this.fCodes,
 			content: {
 				username: this.username,
 				adminCode1: this.statesSelect.value,
 				maxRows: this.maxRows,
-				featureCode: fcode
+				name_startsWith: this.startsWithBox.value,
+				lang: 'en'
 			},
 			handleAs: 'json',
 			callbackParamName: 'callback',
 			load: dojo.hitch(this, 'loadResults'),
 			error: dojo.hitch(this, 'onError')
 		};
-		var startsWith = this.startsWithBox.value;
-		if (startsWith) {
-			params.content.name_startsWith = startsWith;
-		}
 		dojo.io.script.get(params);
 	},
 	loadResults: function (response) {
