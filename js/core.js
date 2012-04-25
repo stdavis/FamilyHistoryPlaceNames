@@ -42,11 +42,17 @@ dojo.declare('fhApp', null, {
 	// goBtn: HTML Button
 	goBtn: null,
 
-	// resultsContainer: div
-	resultsContainer: null,
+	// countiesContainer: div
+	countiesContainer: null,
+
+	// citiesContainer: div
+	citiesContainer: null,
 
 	// warningContainer: div
 	warningContainer: null,
+
+	// totalResults: div
+	totalResults: null,
 
 	// loader: img
 	loader: null,
@@ -63,9 +69,11 @@ dojo.declare('fhApp', null, {
 		this.typeSelect = dojo.byId('type-select');
 		this.startsWithBox = dojo.byId('starts-with-textbox');
 		this.goBtn = dojo.byId('go-button');
-		this.resultsContainer = dojo.byId('results-container');
+		this.countiesContainer = dojo.byId('counties-container');
+		this.citiesContainer = dojo.byId('cities-container');
 		this.warningContainer = dojo.byId('warning-text');
 		this.loader = dojo.byId('loader');
+		this.totalResults = dojo.byId('total-results');
 
 		this.wireEvents();
 
@@ -128,7 +136,9 @@ dojo.declare('fhApp', null, {
 		// summary:
 		//		Fires when the user clicks the go button
 		dojo.addClass(this.errorContainer, 'hidden');
-		this.resultsContainer.innerHTML = '';
+		this.countiesContainer.innerHTML = '';
+		this.citiesContainer.innerHTML = '';
+		this.totalResults.innerHTML = '';
 		dojo.addClass(this.warningContainer, 'hidden');
 		dojo.removeClass(this.loader, 'hidden');
 
@@ -176,16 +186,17 @@ dojo.declare('fhApp', null, {
 			response.geonames.sort(sortArray);
 			dojo.forEach(response.geonames, function (gname) {
 				if (dojo.indexOf(results, gname.name) === -1) {
+					var container = (gname.fcode === 'ADM2') ? 'counties-container' : 'cities-container';
 					dojo.create('div', {
 						innerHTML: gname.name
-					}, this.resultsContainer);
+					}, container);
 					results.push(gname.name);
 				}
 			}, this);
 			dojo.create('span', {
 				'class': 'badge badge-success',
 				innerHTML: results.length
-			}, this.resultsContainer, 'first');
+			}, this.totalResults);
 		}
 
 		dojo.addClass(this.loader, 'hidden');
