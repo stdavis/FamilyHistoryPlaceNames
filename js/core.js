@@ -5,8 +5,8 @@ dojo.declare('fhApp', null, {
 	//		Main app object
 
 	urls: {
-		states: 'https://api.geonames.org/childrenJSON',
-		search: 'https://api.geonames.org/searchJSON'
+		states: 'http://api.geonames.org/childrenJSON',
+		search: 'http://api.geonames.org/searchJSON'
 	},
 
 	// username: String
