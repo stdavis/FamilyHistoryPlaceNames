@@ -1,15 +1,15 @@
 .hero-unit {
-	margin-top: 25px;
+    margin-top: 25px;
 }
 .hidden {
-	display: none;
+    display: none;
 }
 #go-button {
-	margin: 0;
+    margin: 0;
 }
 #loader {
-	margin: 6px 0 0 6px;
+    margin: 6px 0 0 6px;
 }
 .form-horizontal .control-label {
-	width: 150px;
+    width: 150px;
 }

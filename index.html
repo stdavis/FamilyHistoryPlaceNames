@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-	<title>Family History Place Names - US</title>
+    <title>Family History Place Names - US</title>
 
-	<!-- CSS -->
-	<link rel='stylesheet' href='css/bootstrap.min.css'/>
-	<link rel='stylesheet' href='css/core.css'/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel='stylesheet' href='css/core.css'/>
 
-	<!-- JAVASCRIPT -->
-	<script src="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js" djConfig='isDebug:true'></script>
-	<script src='js/core.js'></script>
+    <!-- JAVASCRIPT -->
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.11.2/dojo/dojo.js"></script>
+    <script src='js/core.js'></script>
 </head>
 <body>
-	<div class='container'>
-		<div class='hero-unit'>
-			<h1>Family History Place Names</h1>
-			<p>Built by Elaine's favorite grandson, 
-				<a href="http://twitter.com/#/ScottAGRC">Scott</a>.
-				<br>You can check out the 
-				<a href="https://github.com/stdavis/FamilyHistoryPlaceNames">source on github</a> if you're into that.</p>
-		</div>
-		<div id='form' class='form-horizontal'>
-			<fieldset>
-				<legend>Search for cities and counties within a US state</legend>
-				<div class='control-group'>
-					<label class='control-label'>State</label>
-					<div class='controls'>
-						<select id='states-select' class='span2'></select>
-					</div>
-				</div>
-				<div class='control-group'>
-					<label class='control-label'>City or County starts with</label>
-					<div class='controls'>
-						<input id='starts-with-textbox' type='text' class='span2'/>
-						<p class='help-block'>At least one letter is required.</p>
-					</div>
-				</div>
-				<div class='controls'>
-					<button class='btn btn-primary span2' id='go-button'>Search</button>
-					<img id='loader' src="images/loader.gif">
-				</div>
-			</fieldset>
-		</div>
-		<div id='error-container' class='alert alert-error hidden'>
-			This is kind of embarrassing...but there was an error with the server:<br>
-			<strong id='error-text'>Server error text.</strong><br><br>
-			You can let Scott know at <a href="mailto:scott.sheri@gmail.com">scott.sheri@gmail.com</a>.
-		</div>
-		<div id='warning-text' class='alert alert-warning hidden'></div>
-		<h3>Total Results:</h3>
-		<div id='total-results'></div>
-		<h3>Counties:</h3>
-		<div id='counties-container'></div>
-		<h3>Cities and Other Populated Places:</h3>
-		<div id='cities-container'></div>
-	</div>
-	<script type="text/javascript">
+    <div class='container'>
+        <div class='jumbotron'>
+            <h1>Family History Place Names</h1>
+            <p>Built by Elaine's favorite grandson,
+                <a href="http://twitter.com/#/SThomasDavis">Scott</a>.
+                <br>You can check out the
+                <a href="http://github.com/stdavis/FamilyHistoryPlaceNames">source on github</a> if you're into that.</p>
+        </div>
+        <form id='form'>
+            <h3>Search for cities and counties within a US state</h3>
+            <div class='form-group'>
+                <label>State</label>
+                <select id='states-select' class='form-control'></select>
+            </div>
+            <div class='form-group'>
+                <label>City or County starts with...</label>
+                <input id='starts-with-textbox' type='text' class='form-control'/>
+                <p class='help-block'>At least one letter is required.</p>
+                <img id='loader' src="images/loader.gif">
+            </div>
+        </form>
+        <div id='error-container' class='alert alert-danger hidden'>
+            This is kind of embarrassing...but there was an error with the server:<br>
+            <strong id='error-text'>Server error text.</strong><br><br>
+            You can let Scott know at <a href="mailto:sthomasdavis@gmail.com">scott.sheri@gmail.com</a>.
+        </div>
+        <div id='warning-text' class='alert alert-warning hidden'></div>
+        <h3>Total Results:</h3>
+        <div id='total-results'></div>
+        <h3>Counties:</h3>
+        <div id='counties-container'></div>
+        <h3>Cities and Other Populated Places:</h3>
+        <div id='cities-container'></div>
+    </div>
+    <script type="text/javascript">
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-3353875-5']);
-	  _gaq.push(['_trackPageview']);
-	
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	
-	</script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3353875-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
 </body>
 </html>
